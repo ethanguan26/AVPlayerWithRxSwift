@@ -8,6 +8,9 @@
 
 import UIKit
 import AVFoundation
+import RxSwift
+import RxCocoa
+
 
 class AVPlayerToolsBar: UIView {
     
@@ -16,6 +19,21 @@ class AVPlayerToolsBar: UIView {
     @IBOutlet private weak var progressView: UIProgressView!
     @IBOutlet private weak var totalTime: UILabel!
     
+    let disposeBag = DisposeBag()
+    
+    var progress: Variable<Float> = Variable(0.0)
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        
+        progress.asObservable()
+            .debug("Tools Bar Observable")
+            .bindTo(progressView.rx.progress)
+            .addDisposableTo(disposeBag)
+        
+        
+    }
     
 }
 
