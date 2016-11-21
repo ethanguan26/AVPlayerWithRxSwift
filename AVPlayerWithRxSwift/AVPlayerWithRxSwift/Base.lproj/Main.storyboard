@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -57,7 +56,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kXx-QA-wAw">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </scrollView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Egk-QA-Kbg">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Egk-QA-Kbg" customClass="AVPlayerToolsBar" customModule="AVPlayerWithRxSwift" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -70,10 +69,10 @@
                             <constraint firstItem="ELc-QY-tNK" firstAttribute="top" secondItem="kXx-QA-wAw" secondAttribute="bottom" id="5c7-H1-LKI"/>
                             <constraint firstItem="ELc-QY-tNK" firstAttribute="top" secondItem="Egk-QA-Kbg" secondAttribute="bottom" id="G2A-5f-zjD"/>
                             <constraint firstAttribute="trailing" secondItem="kXx-QA-wAw" secondAttribute="trailing" id="RlY-a4-aiS"/>
-                            <constraint firstItem="Egk-QA-Kbg" firstAttribute="leading" secondItem="Equ-JK-Och" secondAttribute="leadingMargin" constant="-16" id="bqm-9s-X7k"/>
                             <constraint firstItem="kXx-QA-wAw" firstAttribute="leading" secondItem="Equ-JK-Och" secondAttribute="leading" id="ixZ-Wx-gSU"/>
+                            <constraint firstAttribute="trailing" secondItem="Egk-QA-Kbg" secondAttribute="trailing" id="kIx-Ag-9tD"/>
+                            <constraint firstItem="Egk-QA-Kbg" firstAttribute="leading" secondItem="Equ-JK-Och" secondAttribute="leading" id="oqw-ZH-4Xb"/>
                             <constraint firstItem="kXx-QA-wAw" firstAttribute="top" secondItem="Equ-JK-Och" secondAttribute="top" id="vKy-If-xTY"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Egk-QA-Kbg" secondAttribute="trailing" constant="-16" id="znc-rh-GSI"/>
                         </constraints>
                     </view>
                     <connections>
