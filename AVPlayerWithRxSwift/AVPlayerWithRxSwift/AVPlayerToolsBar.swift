@@ -6,6 +6,7 @@
 //  Copyright © 2016年 YGuan. All rights reserved.
 //
 
+
 import UIKit
 import AVFoundation
 import RxSwift
@@ -18,10 +19,19 @@ class AVPlayerToolsBar: UIView {
     @IBOutlet private weak var currentTime: UILabel!
     @IBOutlet private weak var progressView: UIProgressView!
     @IBOutlet private weak var totalTime: UILabel!
+    @IBOutlet var barView: UIView!
     
     let disposeBag = DisposeBag()
     
     var progress: Variable<Float> = Variable(0.0)
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        Bundle.main.loadNibNamed("AVPlayerToolsBar", owner: self, options: nil)
+        
+        self.addSubview(barView)
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
