@@ -12,6 +12,9 @@
 		586C2D4D1DE2C47D00661E83 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 586C2D4B1DE2C47D00661E83 /* Main.storyboard */; };
 		586C2D4F1DE2C47D00661E83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 586C2D4E1DE2C47D00661E83 /* Assets.xcassets */; };
 		586C2D521DE2C47D00661E83 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 586C2D501DE2C47D00661E83 /* LaunchScreen.storyboard */; };
+		586C2D5A1DE2C83100661E83 /* AVPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586C2D591DE2C83100661E83 /* AVPlayerViewController.swift */; };
+		586C2D5C1DE2C84C00661E83 /* AVPlayerToolsBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586C2D5B1DE2C84C00661E83 /* AVPlayerToolsBar.swift */; };
+		586C2D5E1DE2C85C00661E83 /* AVPlayerToolsBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 586C2D5D1DE2C85C00661E83 /* AVPlayerToolsBar.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		586C2D4E1DE2C47D00661E83 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		586C2D511DE2C47D00661E83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		586C2D531DE2C47D00661E83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		586C2D591DE2C83100661E83 /* AVPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVPlayerViewController.swift; sourceTree = "<group>"; };
+		586C2D5B1DE2C84C00661E83 /* AVPlayerToolsBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVPlayerToolsBar.swift; sourceTree = "<group>"; };
+		586C2D5D1DE2C85C00661E83 /* AVPlayerToolsBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AVPlayerToolsBar.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +60,25 @@
 		586C2D461DE2C47D00661E83 /* AVPlayerWithRxSwift */ = {
 			isa = PBXGroup;
 			children = (
+				586C2D5F1DE2D1F400661E83 /* AV */,
 				586C2D471DE2C47D00661E83 /* AppDelegate.swift */,
 				586C2D491DE2C47D00661E83 /* ViewController.swift */,
+				586C2D591DE2C83100661E83 /* AVPlayerViewController.swift */,
 				586C2D4B1DE2C47D00661E83 /* Main.storyboard */,
 				586C2D4E1DE2C47D00661E83 /* Assets.xcassets */,
 				586C2D501DE2C47D00661E83 /* LaunchScreen.storyboard */,
 				586C2D531DE2C47D00661E83 /* Info.plist */,
 			);
 			path = AVPlayerWithRxSwift;
+			sourceTree = "<group>";
+		};
+		586C2D5F1DE2D1F400661E83 /* AV */ = {
+			isa = PBXGroup;
+			children = (
+				586C2D5B1DE2C84C00661E83 /* AVPlayerToolsBar.swift */,
+				586C2D5D1DE2C85C00661E83 /* AVPlayerToolsBar.xib */,
+			);
+			name = AV;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,6 +144,7 @@
 				586C2D521DE2C47D00661E83 /* LaunchScreen.storyboard in Resources */,
 				586C2D4F1DE2C47D00661E83 /* Assets.xcassets in Resources */,
 				586C2D4D1DE2C47D00661E83 /* Main.storyboard in Resources */,
+				586C2D5E1DE2C85C00661E83 /* AVPlayerToolsBar.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,7 +156,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				586C2D4A1DE2C47D00661E83 /* ViewController.swift in Sources */,
+				586C2D5A1DE2C83100661E83 /* AVPlayerViewController.swift in Sources */,
 				586C2D481DE2C47D00661E83 /* AppDelegate.swift in Sources */,
+				586C2D5C1DE2C84C00661E83 /* AVPlayerToolsBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
