@@ -16,14 +16,12 @@ import RxCocoa
 class AVPlayerToolsBar: UIView {
     
     @IBOutlet private weak var playButton: UIButton!
-    @IBOutlet private weak var currentTime: UILabel!
-    @IBOutlet private weak var progressView: UIProgressView!
-    @IBOutlet private weak var totalTime: UILabel!
+    @IBOutlet weak var currentTime: UILabel!
+    @IBOutlet weak var totalTime: UILabel!
+    @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet var barView: UIView!
     
     let disposeBag = DisposeBag()
-    
-    var progress: Variable<Float> = Variable(0.0)
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -31,18 +29,6 @@ class AVPlayerToolsBar: UIView {
         Bundle.main.loadNibNamed("AVPlayerToolsBar", owner: self, options: nil)
         
         self.addSubview(barView)
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        
-        progress.asObservable()
-            .debug("Tools Bar Observable")
-            .bindTo(progressView.rx.progress)
-            .addDisposableTo(disposeBag)
-        
-        
     }
     
 }
