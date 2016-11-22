@@ -15,7 +15,7 @@ import RxCocoa
 
 class AVPlayerToolsBar: UIView {
     
-    @IBOutlet private weak var playButton: UIButton!
+    @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var currentTime: UILabel!
     @IBOutlet weak var totalTime: UILabel!
     @IBOutlet weak var progressView: UIProgressView!
@@ -32,13 +32,3 @@ class AVPlayerToolsBar: UIView {
     }
     
 }
-
-
-//extension Reactive where Base: UIButton {
-//    var valid: UIBindingObserver<Base, Bool> {
-//        return UIBindingObserver(UIElement: base) { button, valid in
-//            button.alpha = valid ? 1 : 0.5
-//            button.isEnabled = valid
-//        }
-//    }
-//}

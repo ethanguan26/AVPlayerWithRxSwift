@@ -24,7 +24,7 @@ class AVPlayerViewController: UIViewController {
     
     let currentTimeVariable = Variable(0.0)
     let totalTimeVariable = Variable(0.0)
-    
+    let playingVariable = Variable(false)
     
     /// IBOutlet vaiables
     @IBOutlet weak var scrollView: UIScrollView!
@@ -86,11 +86,34 @@ class AVPlayerViewController: UIViewController {
         )
     }
     
+    func isPlaying() -> Bool {
+        return self.player!.rate != 0
+    }
+    
     private func initializationBindRelationship() {
+        
+        let playingObservable = playingVariable.asObservable()
+        
+        let event = Observable.combineLatest(avToolsBar.playButton.rx.tap, playingObservable, resultSelector: { [weak self] (_, isPlaying) -> Bool in
+            return (self?.isPlaying())!
+        })
+        .scan(player!, accumulator: { (player, isPlaying) -> AVPlayer in
+            if isPlaying {
+                player.pause()
+            } else {
+                player.play()
+            }
+            return player
+        })
+        .map({ player in
+            return player.rate > 0
+        })
+        .asObservable()
         
         viewModel = MediaViewModel(
             playerDuration:totalTimeVariable.asObservable(),
-            currentTimeObservable:currentTimeVariable.asObservable()
+            currentTimeObservable:currentTimeVariable.asObservable(),
+            event:event
         )
         
         viewModel?.currentTime.asObservable()
@@ -105,6 +128,10 @@ class AVPlayerViewController: UIViewController {
             .bindTo(avToolsBar.progressView.rx.progress)
             .addDisposableTo(disposeBag)
         
+        viewModel?.playEvent
+            .bindTo(avToolsBar.playButton.rx.playing)
+            .addDisposableTo(disposeBag)
+        
         player!.addPeriodicTimeObserver(
             forInterval: CMTimeMake(100, 600),
             queue: DispatchQueue.main
@@ -113,21 +140,18 @@ class AVPlayerViewController: UIViewController {
             guard self?.playerItemDuration() != nil else {
                 return
             }
-            
             let playerDuration: CMTime = (self?.playerItemDuration())!
-            
             if !playerDuration.isValid {
                 self?.currentTimeVariable.value = 0
                 self?.totalTimeVariable.value = 0
-
                 return
             }
             
             let duration: Double = CMTimeGetSeconds(playerDuration)
             let currentTime: Double = CMTimeGetSeconds((self?.player!.currentTime())!)
-        
             self?.currentTimeVariable.value = currentTime
             self?.totalTimeVariable.value = duration
+            
         }
         
     }
