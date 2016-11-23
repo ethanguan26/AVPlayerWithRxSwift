@@ -94,11 +94,7 @@ class AVPlayerViewController
             
         )
     }
-    
-    private func isPlaying() -> Bool {
-        return self.player!.rate != 0
-    }
-    
+
     private func initializationBindRelationship() {
 
         let event = avToolsBar.playButton.rx.tap
@@ -175,6 +171,13 @@ class AVPlayerViewController
             self?.currentTimeVariable.value = currentTime
             self?.totalTimeVariable.value = duration
         }
+    }
+    
+    /// Return the current player playing status
+    ///
+    /// - Returns: palyer is playing or not
+    private func isPlaying() -> Bool {
+        return self.player!.rate != 0
     }
     
     /// Get current player item duration
