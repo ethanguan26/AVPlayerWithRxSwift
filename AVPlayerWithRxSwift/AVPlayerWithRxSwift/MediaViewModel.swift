@@ -33,24 +33,24 @@ struct MediaViewModel {
             let progress: Float = Float(current/duration)
             let progressStr = String(format: "%.2f", progress)
             return  Float(progressStr)!
-        }
-        .bindTo(progress)
-        .addDisposableTo(disposeBag)
+            }
+            .bindTo(progress)
+            .addDisposableTo(disposeBag)
         
         currentTimeObservable
             .map { nowTime -> String in
-            return nowTime.toTimeFormatter()
-        }
-        .bindTo(currentTime)
-        .addDisposableTo(disposeBag)
+                return nowTime.toTimeFormatter()
+            }
+            .bindTo(currentTime)
+            .addDisposableTo(disposeBag)
         
         
         playerDuration
             .map { duration -> String in
-            return duration.toTimeFormatter()
-        }
-        .bindTo(totalTime)
-        .addDisposableTo(disposeBag)
+                return duration.toTimeFormatter()
+            }
+            .bindTo(totalTime)
+            .addDisposableTo(disposeBag)
         
         
         event

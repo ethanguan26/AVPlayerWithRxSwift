@@ -14,7 +14,7 @@
                 <outlet property="barView" destination="iN0-l3-epB" id="z3q-yR-Jdm"/>
                 <outlet property="currentTime" destination="bdf-vS-5jz" id="7nF-bW-8Yd"/>
                 <outlet property="playButton" destination="JTw-yC-xnr" id="YRy-nv-kE5"/>
-                <outlet property="progressView" destination="rXK-Lt-fFP" id="U6e-84-ZkG"/>
+                <outlet property="slider" destination="iAA-Yg-0P0" id="n5y-zp-g1u"/>
                 <outlet property="totalTime" destination="dAl-Ec-TLa" id="hB5-ae-qjU"/>
             </connections>
         </placeholder>
@@ -24,7 +24,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lid-QE-ch3">
-                    <rect key="frame" x="21" y="0.0" width="333" height="44"/>
+                    <rect key="frame" x="21.5" y="0.0" width="332" height="44"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JTw-yC-xnr">
                             <rect key="frame" x="15" y="10" width="24" height="24"/>
@@ -43,14 +43,14 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rXK-Lt-fFP">
-                            <rect key="frame" x="105" y="21" width="150" height="2"/>
+                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="iAA-Yg-0P0">
+                            <rect key="frame" x="101" y="7" width="157" height="31"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="150" id="y5H-PG-cir"/>
+                                <constraint firstAttribute="width" constant="153" id="eOQ-pg-CHF"/>
                             </constraints>
-                        </progressView>
+                        </slider>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAl-Ec-TLa">
-                            <rect key="frame" x="263" y="15.5" width="50" height="13.5"/>
+                            <rect key="frame" x="262" y="15.5" width="50" height="13.5"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="50" id="L4e-r0-igD"/>
                             </constraints>
@@ -61,15 +61,15 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstItem="dAl-Ec-TLa" firstAttribute="leading" secondItem="iAA-Yg-0P0" secondAttribute="trailing" constant="6" id="9nI-G0-qBf"/>
                         <constraint firstItem="bdf-vS-5jz" firstAttribute="centerY" secondItem="lid-QE-ch3" secondAttribute="centerY" id="R7a-pf-4tn"/>
-                        <constraint firstItem="dAl-Ec-TLa" firstAttribute="leading" secondItem="rXK-Lt-fFP" secondAttribute="trailing" constant="8" id="X5Y-e8-XXe"/>
-                        <constraint firstItem="rXK-Lt-fFP" firstAttribute="centerY" secondItem="lid-QE-ch3" secondAttribute="centerY" id="dmo-BZ-ixR"/>
+                        <constraint firstItem="iAA-Yg-0P0" firstAttribute="leading" secondItem="bdf-vS-5jz" secondAttribute="trailing" constant="6" id="Vas-jV-8Lm"/>
                         <constraint firstItem="dAl-Ec-TLa" firstAttribute="centerY" secondItem="lid-QE-ch3" secondAttribute="centerY" id="eQ0-vI-Gk7"/>
                         <constraint firstAttribute="trailing" secondItem="dAl-Ec-TLa" secondAttribute="trailing" constant="20" id="m5C-JL-AE8"/>
-                        <constraint firstItem="rXK-Lt-fFP" firstAttribute="leading" secondItem="bdf-vS-5jz" secondAttribute="trailing" constant="8" id="mRe-Wi-Rpt"/>
                         <constraint firstItem="JTw-yC-xnr" firstAttribute="centerY" secondItem="lid-QE-ch3" secondAttribute="centerY" id="nkS-uo-H2G"/>
                         <constraint firstItem="JTw-yC-xnr" firstAttribute="leading" secondItem="lid-QE-ch3" secondAttribute="leading" constant="15" id="rAd-CF-Mpx"/>
                         <constraint firstItem="bdf-vS-5jz" firstAttribute="leading" secondItem="JTw-yC-xnr" secondAttribute="trailing" constant="8" id="smh-44-GgI"/>
+                        <constraint firstItem="iAA-Yg-0P0" firstAttribute="centerY" secondItem="lid-QE-ch3" secondAttribute="centerY" id="ubW-7w-Fjy"/>
                     </constraints>
                 </view>
             </subviews>
@@ -80,7 +80,7 @@
                 <constraint firstItem="lid-QE-ch3" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="kKI-uz-EsY"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-110" y="349"/>
+            <point key="canvasLocation" x="-110.5" y="349"/>
         </view>
     </objects>
     <resources>

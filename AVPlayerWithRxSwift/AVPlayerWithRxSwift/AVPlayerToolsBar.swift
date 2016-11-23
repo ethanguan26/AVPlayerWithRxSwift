@@ -18,7 +18,7 @@ class AVPlayerToolsBar: UIView {
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var currentTime: UILabel!
     @IBOutlet weak var totalTime: UILabel!
-    @IBOutlet weak var progressView: UIProgressView!
+    @IBOutlet weak var slider: UISlider!
     @IBOutlet var barView: UIView!
     
     let disposeBag = DisposeBag()

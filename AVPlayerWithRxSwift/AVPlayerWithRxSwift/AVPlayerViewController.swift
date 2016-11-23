@@ -127,12 +127,13 @@ class AVPlayerViewController: UIViewController {
             .addDisposableTo(disposeBag)
         
         viewModel?.progress
-            .bindTo(avToolsBar.progressView.rx.progress)
+            .bindTo(avToolsBar.slider.rx.value)
             .addDisposableTo(disposeBag)
         
         viewModel?.playEvent
             .bindTo(avToolsBar.playButton.rx.playing)
             .addDisposableTo(disposeBag)
+        
         
         player!.addPeriodicTimeObserver(
             forInterval: CMTimeMake(100, 600),
