@@ -11,7 +11,9 @@ import AVFoundation
 import RxSwift
 import RxCocoa
 
-class AVPlayerViewController: UIViewController {
+class AVPlayerViewController
+    : UIViewController
+    , UIScrollViewDelegate {
     
     /// Properties
     var filePath: String?
@@ -42,12 +44,21 @@ class AVPlayerViewController: UIViewController {
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        playerContainer?.frame = scrollView.bounds
-        playerLayer?.frame = (playerContainer?.layer.bounds)!
+        
+        print(player?.currentItem?.status.rawValue ?? "Nil")
+        
+        if player?.currentItem?.status != .readyToPlay {
+            playerContainer?.frame = scrollView.bounds
+            playerLayer?.frame = (playerContainer?.layer.bounds)!
+        }
+        
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+
+        
         player?.play()
         avToolsBar.isPlaying = true
     }
@@ -149,13 +160,12 @@ class AVPlayerViewController: UIViewController {
                 self?.totalTimeVariable.value = 0
                 return
             }
-            
+
             let duration: Double = CMTimeGetSeconds(playerDuration)
             let currentTime: Double = CMTimeGetSeconds((self?.player!.currentTime())!)
             self?.currentTimeVariable.value = currentTime
             self?.totalTimeVariable.value = duration
         }
-        
     }
     
     /// Get current player item duration
