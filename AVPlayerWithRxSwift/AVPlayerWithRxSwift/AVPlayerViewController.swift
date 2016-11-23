@@ -13,20 +13,21 @@ import RxCocoa
 
 class AVPlayerViewController: UIViewController {
     
-    ///properties
+    /// Properties
     var filePath: String?
-    var player: AVPlayer?
-    var playerLayer: AVPlayerLayer?
-    var playerContainer: UIView?
+    private var player: AVPlayer?
+    private var playerLayer: AVPlayerLayer?
+    private var playerContainer: UIView?
+    private var viewModel: MediaViewModel?
     
-    let disposeBag = DisposeBag()
-    var viewModel: MediaViewModel?
+    /// Consts
+    private let disposeBag = DisposeBag()
     
-    let currentTimeVariable = Variable(0.0)
-    let totalTimeVariable = Variable(0.0)
-    let playingVariable = Variable(false)
+    /// Bingding variable
+    private let currentTimeVariable = Variable(0.0)
+    private let totalTimeVariable = Variable(0.0)
     
-    /// IBOutlet vaiables
+    /// IBOutlet variable
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var avToolsBar: AVPlayerToolsBar!
     
@@ -48,6 +49,7 @@ class AVPlayerViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         player?.play()
+        avToolsBar.isPlaying = true
     }
 
     
@@ -82,21 +84,21 @@ class AVPlayerViewController: UIViewController {
             self,
             selector: #selector(playerItemDidReachEnd(notification:)),
             name: NSNotification.Name.AVPlayerItemDidPlayToEndTime,
-            object: self.playerLayer
+            object: nil
+            
         )
     }
     
-    func isPlaying() -> Bool {
+    private func isPlaying() -> Bool {
         return self.player!.rate != 0
     }
     
     private func initializationBindRelationship() {
-        
-        let playingObservable = playingVariable.asObservable()
-        
-        let event = Observable.combineLatest(avToolsBar.playButton.rx.tap, playingObservable, resultSelector: { [weak self] (_, isPlaying) -> Bool in
+
+        let event = avToolsBar.playButton.rx.tap
+            .map { [weak self] _ -> Bool in
             return (self?.isPlaying())!
-        })
+        }
         .scan(player!, accumulator: { (player, isPlaying) -> AVPlayer in
             if isPlaying {
                 player.pause()
@@ -151,12 +153,12 @@ class AVPlayerViewController: UIViewController {
             let currentTime: Double = CMTimeGetSeconds((self?.player!.currentTime())!)
             self?.currentTimeVariable.value = currentTime
             self?.totalTimeVariable.value = duration
-            
         }
         
     }
     
-    func playerItemDuration() -> CMTime {
+    /// Get current player item duration
+    private func playerItemDuration() -> CMTime {
         let playerItem: AVPlayerItem = player!.currentItem!
         if playerItem.status == .readyToPlay {
             return playerItem.duration
@@ -170,6 +172,7 @@ class AVPlayerViewController: UIViewController {
     }
     
     // Mark: UIScrollView Delegate
+    /// Zooming view
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return playerContainer!
     }
@@ -177,7 +180,10 @@ class AVPlayerViewController: UIViewController {
     // MARK: Notification
     /// Send message when player did finished
     func playerItemDidReachEnd(notification: NSNotification) {
-    
+        avToolsBar.isPlaying = false
+        player?.seek(to: CMTimeMakeWithSeconds(0, Int32(NSEC_PER_SEC)))
+        currentTimeVariable.value = 0
+        totalTimeVariable.value = 0
     }
 
 }

@@ -55,6 +55,9 @@
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kXx-QA-wAw">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <connections>
+                                    <outlet property="delegate" destination="8Ce-n4-eFR" id="NdG-ue-HFs"/>
+                                </connections>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Egk-QA-Kbg" customClass="AVPlayerToolsBar" customModule="AVPlayerWithRxSwift" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>

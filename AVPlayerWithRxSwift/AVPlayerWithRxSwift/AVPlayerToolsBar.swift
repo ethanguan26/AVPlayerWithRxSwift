@@ -23,6 +23,13 @@ class AVPlayerToolsBar: UIView {
     
     let disposeBag = DisposeBag()
     
+    var isPlaying = false {
+        didSet {
+            let image = isPlaying ? #imageLiteral(resourceName: "btn_stop") : #imageLiteral(resourceName: "btn play")
+            playButton.setBackgroundImage(image, for: .normal)
+        }
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
