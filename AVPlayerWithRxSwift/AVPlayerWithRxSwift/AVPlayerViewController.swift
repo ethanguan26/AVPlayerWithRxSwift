@@ -44,9 +44,7 @@ class AVPlayerViewController
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
-        print(player?.currentItem?.status.rawValue ?? "Nil")
-        
+
         if player?.currentItem?.status != .readyToPlay {
             playerContainer?.frame = scrollView.bounds
             playerLayer?.frame = (playerContainer?.layer.bounds)!
@@ -56,9 +54,6 @@ class AVPlayerViewController
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-
-        
         player?.play()
         avToolsBar.isPlaying = true
     }
@@ -145,6 +140,20 @@ class AVPlayerViewController
             .bindTo(avToolsBar.playButton.rx.playing)
             .addDisposableTo(disposeBag)
         
+        avToolsBar.slider.rx.value
+            .subscribe(onNext: { value in
+                let playerDuration: CMTime = self.playerItemDuration()
+                let duration: Double  = CMTimeGetSeconds(playerDuration);
+                
+                let currentTime: Double = CMTimeGetSeconds(self.player!.currentTime())
+                if (currentTime <= 0 && value == Float(0)) || (currentTime >= duration && value == 1) {
+                    return;
+                }
+                
+                let time: Double = duration * Double(value)
+                self.player!.seek(to: CMTimeMakeWithSeconds(time, Int32(NSEC_PER_SEC)))
+            })
+            .addDisposableTo(disposeBag)
         
         player!.addPeriodicTimeObserver(
             forInterval: CMTimeMake(100, 600),
