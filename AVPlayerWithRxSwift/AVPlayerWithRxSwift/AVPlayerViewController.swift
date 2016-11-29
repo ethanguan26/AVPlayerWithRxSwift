@@ -37,7 +37,7 @@ class AVPlayerViewController
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let path = Bundle.main.path(forResource: "Test02", ofType: "m4v")
+        let path = Bundle.main.path(forResource: "sample", ofType: "mp4")
         initializationPlayer(path: path)
         initializationBindRelationship()
     }

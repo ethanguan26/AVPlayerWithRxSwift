@@ -15,7 +15,6 @@
 		586C2D5A1DE2C83100661E83 /* AVPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586C2D591DE2C83100661E83 /* AVPlayerViewController.swift */; };
 		586C2D5C1DE2C84C00661E83 /* AVPlayerToolsBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586C2D5B1DE2C84C00661E83 /* AVPlayerToolsBar.swift */; };
 		586C2D5E1DE2C85C00661E83 /* AVPlayerToolsBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 586C2D5D1DE2C85C00661E83 /* AVPlayerToolsBar.xib */; };
-		586C2D621DE30B4A00661E83 /* Test02.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 586C2D611DE30B4A00661E83 /* Test02.m4v */; };
 		5899C2901DE40D1000103C7E /* MediaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5899C28F1DE40D1000103C7E /* MediaViewModel.swift */; };
 		5899C2B61DE4438600103C7E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5899C2B51DE4438600103C7E /* Extensions.swift */; };
 /* End PBXBuildFile section */
@@ -31,7 +30,7 @@
 		586C2D591DE2C83100661E83 /* AVPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVPlayerViewController.swift; sourceTree = "<group>"; };
 		586C2D5B1DE2C84C00661E83 /* AVPlayerToolsBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVPlayerToolsBar.swift; sourceTree = "<group>"; };
 		586C2D5D1DE2C85C00661E83 /* AVPlayerToolsBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AVPlayerToolsBar.xib; sourceTree = "<group>"; };
-		586C2D611DE30B4A00661E83 /* Test02.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = Test02.m4v; sourceTree = "<group>"; };
+		587CABBE1DED0C0A00A0A2E7 /* sample.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sample.mp4; sourceTree = "<group>"; };
 		5899C28F1DE40D1000103C7E /* MediaViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaViewModel.swift; sourceTree = "<group>"; };
 		5899C2B51DE4438600103C7E /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -66,7 +65,7 @@
 		586C2D461DE2C47D00661E83 /* AVPlayerWithRxSwift */ = {
 			isa = PBXGroup;
 			children = (
-				586C2D611DE30B4A00661E83 /* Test02.m4v */,
+				587CABBE1DED0C0A00A0A2E7 /* sample.mp4 */,
 				586C2D5F1DE2D1F400661E83 /* AVToolsBar */,
 				586C2D471DE2C47D00661E83 /* AppDelegate.swift */,
 				586C2D491DE2C47D00661E83 /* ViewController.swift */,
@@ -154,7 +153,6 @@
 			files = (
 				586C2D521DE2C47D00661E83 /* LaunchScreen.storyboard in Resources */,
 				586C2D4F1DE2C47D00661E83 /* Assets.xcassets in Resources */,
-				586C2D621DE30B4A00661E83 /* Test02.m4v in Resources */,
 				586C2D4D1DE2C47D00661E83 /* Main.storyboard in Resources */,
 				586C2D5E1DE2C85C00661E83 /* AVPlayerToolsBar.xib in Resources */,
 			);
