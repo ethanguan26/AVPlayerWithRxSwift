@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>AVPlayerWithRxSwift.xcscheme</key>
+		<key>AVPlayerInRxSwift.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,7 +12,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>586C2D431DE2C47D00661E83</key>
+		<key>58E03EAA1E1018B2005F7B23</key>
 		<dict>
 			<key>primary</key>
 			<true/>

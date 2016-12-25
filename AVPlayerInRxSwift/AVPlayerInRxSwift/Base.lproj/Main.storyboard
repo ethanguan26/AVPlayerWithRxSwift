@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C53a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="G0q-LD-jzg">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="FqW-Nm-LBx">
+            <objects>
+                <viewController id="n0r-qp-Swk" customClass="ViewController" customModule="AVPlayerInRxSwift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lUl-Oh-yzX"/>
+                        <viewControllerLayoutGuide type="bottom" id="96W-Ip-NcY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DQY-sX-cQz" customClass="V">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VTh-Fu-Qu6">
+                                <rect key="frame" x="122" y="318" width="131" height="30"/>
+                                <state key="normal" title="Show me the video"/>
+                                <connections>
+                                    <segue destination="9Xe-Ms-itm" kind="show" id="rTc-pa-JAJ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="VTh-Fu-Qu6" firstAttribute="centerY" secondItem="DQY-sX-cQz" secondAttribute="centerY" id="We2-C4-zKm"/>
+                            <constraint firstItem="VTh-Fu-Qu6" firstAttribute="centerX" secondItem="DQY-sX-cQz" secondAttribute="centerX" id="oE3-Um-vsG"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="uWP-A6-nZc"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c4X-N3-hDk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-61.600000000000001" y="-100.29985007496252"/>
+        </scene>
+        <!--Player View Controller-->
+        <scene sceneID="zh0-Bl-GWj">
+            <objects>
+                <viewController id="9Xe-Ms-itm" customClass="AVPlayerViewController" customModule="AVPlayerInRxSwift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Nqo-Qd-55M"/>
+                        <viewControllerLayoutGuide type="bottom" id="xmq-5a-PUg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="KjC-u3-ft1" customClass="AVPlayerv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nhd-IY-FeY">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                            </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1U9-Cb-Gl2" customClass="AVPlayerToolsBar" customModule="AVPlayerInRxSwift" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.79514471476510062" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="nel-VH-yQt"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="xmq-5a-PUg" firstAttribute="top" secondItem="1U9-Cb-Gl2" secondAttribute="bottom" id="8r6-MQ-jiB"/>
+                            <constraint firstAttribute="trailing" secondItem="nhd-IY-FeY" secondAttribute="trailing" id="CPE-MR-WrH"/>
+                            <constraint firstAttribute="trailing" secondItem="1U9-Cb-Gl2" secondAttribute="trailing" id="IxM-Eb-Wg7"/>
+                            <constraint firstItem="1U9-Cb-Gl2" firstAttribute="top" secondItem="nhd-IY-FeY" secondAttribute="bottom" id="MuO-vU-PUH"/>
+                            <constraint firstItem="nhd-IY-FeY" firstAttribute="top" secondItem="KjC-u3-ft1" secondAttribute="top" id="QFJ-So-2k3"/>
+                            <constraint firstItem="nhd-IY-FeY" firstAttribute="leading" secondItem="KjC-u3-ft1" secondAttribute="leading" id="Qtb-zO-WTY"/>
+                            <constraint firstItem="1U9-Cb-Gl2" firstAttribute="leading" secondItem="KjC-u3-ft1" secondAttribute="leading" id="Vmn-S3-0F7"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="avToolsBar" destination="1U9-Cb-Gl2" id="n43-Zp-yKk"/>
+                        <outlet property="scrollView" destination="nhd-IY-FeY" id="qW1-Gh-cK6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sy7-kI-7Rb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="704.79999999999995" y="-100.29985007496252"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="kKs-Ay-w5v">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="G0q-LD-jzg" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kt8-OO-ogU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="n0r-qp-Swk" kind="relationship" relationship="rootViewController" id="yBG-Dg-P8N"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vMn-a6-F9K" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1002.4" y="-100.29985007496252"/>
+        </scene>
+    </scenes>
+</document>

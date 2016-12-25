@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0810"
+   LastUpgradeVersion = "0820"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "586C2D431DE2C47D00661E83"
-               BuildableName = "AVPlayerWithRxSwift.app"
-               BlueprintName = "AVPlayerWithRxSwift"
-               ReferencedContainer = "container:AVPlayerWithRxSwift.xcodeproj">
+               BlueprintIdentifier = "58E03EAA1E1018B2005F7B23"
+               BuildableName = "AVPlayerInRxSwift.app"
+               BlueprintName = "AVPlayerInRxSwift"
+               ReferencedContainer = "container:AVPlayerInRxSwift.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +32,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "586C2D431DE2C47D00661E83"
-            BuildableName = "AVPlayerWithRxSwift.app"
-            BlueprintName = "AVPlayerWithRxSwift"
-            ReferencedContainer = "container:AVPlayerWithRxSwift.xcodeproj">
+            BlueprintIdentifier = "58E03EAA1E1018B2005F7B23"
+            BuildableName = "AVPlayerInRxSwift.app"
+            BlueprintName = "AVPlayerInRxSwift"
+            ReferencedContainer = "container:AVPlayerInRxSwift.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -55,10 +55,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "586C2D431DE2C47D00661E83"
-            BuildableName = "AVPlayerWithRxSwift.app"
-            BlueprintName = "AVPlayerWithRxSwift"
-            ReferencedContainer = "container:AVPlayerWithRxSwift.xcodeproj">
+            BlueprintIdentifier = "58E03EAA1E1018B2005F7B23"
+            BuildableName = "AVPlayerInRxSwift.app"
+            BlueprintName = "AVPlayerInRxSwift"
+            ReferencedContainer = "container:AVPlayerInRxSwift.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -74,10 +74,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "586C2D431DE2C47D00661E83"
-            BuildableName = "AVPlayerWithRxSwift.app"
-            BlueprintName = "AVPlayerWithRxSwift"
-            ReferencedContainer = "container:AVPlayerWithRxSwift.xcodeproj">
+            BlueprintIdentifier = "58E03EAA1E1018B2005F7B23"
+            BuildableName = "AVPlayerInRxSwift.app"
+            BlueprintName = "AVPlayerInRxSwift"
+            ReferencedContainer = "container:AVPlayerInRxSwift.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

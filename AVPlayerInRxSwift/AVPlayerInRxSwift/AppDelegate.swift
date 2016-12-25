@@ -1,9 +1,9 @@
 //
 //  AppDelegate.swift
-//  AVPlayerWithRxSwift
+//  AVPlayerInRxSwift
 //
-//  Created by YGuan on 2016/11/21.
-//  Copyright © 2016年 YGuan. All rights reserved.
+//  Created by YGuan on 25/12/2016.
+//  Copyright © 2016 YGuan. All rights reserved.
 //
 
 import UIKit
