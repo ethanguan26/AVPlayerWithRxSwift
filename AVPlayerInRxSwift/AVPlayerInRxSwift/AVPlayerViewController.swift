@@ -17,10 +17,9 @@ class AVPlayerViewController
     
     /// Properties
     var filePath: String?
-    private var player: AVPlayer?
-    private var playerLayer: AVPlayerLayer?
-    private var playerContainer: UIView?
-    private var viewModel: MediaViewModel?
+    private var player: AVPlayer!
+    private var playerLayer: AVPlayerLayer!
+    private var playerContainer: UIView!
     
     /// Consts
     private let disposeBag = DisposeBag()
@@ -45,19 +44,18 @@ class AVPlayerViewController
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
-        if player?.currentItem?.status != .readyToPlay {
-            playerContainer?.frame = scrollView.bounds
-            playerLayer?.frame = (playerContainer?.layer.bounds)!
+        if player.currentItem?.status != .readyToPlay {
+            playerContainer.frame = scrollView.bounds
+            playerLayer.frame = playerContainer.layer.bounds
         }
         
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        player?.play()
+        player.play()
         avToolsBar.isPlaying = true
     }
-
     
     // MARK: Private method
     
@@ -66,9 +64,7 @@ class AVPlayerViewController
     /// - Parameter path: doucument path
     private func initializationPlayer(path: String?) {
         
-        guard path != nil else {
-            return
-        }
+        guard path != nil else { return }
         
         playerContainer = UIView(frame: scrollView.bounds)
         scrollView.addSubview(playerContainer!)
@@ -78,13 +74,13 @@ class AVPlayerViewController
         let item = AVPlayerItem(asset: asset)
         player = AVPlayer(playerItem: item)
         playerLayer = AVPlayerLayer(player: player)
-        playerContainer?.layer.addSublayer(playerLayer!)
+        playerContainer.layer.addSublayer(playerLayer)
         
         let tap = UITapGestureRecognizer(
             target: self,
             action: #selector(changePlayerSize)
         )
-        playerContainer?.addGestureRecognizer(tap)
+        playerContainer.addGestureRecognizer(tap)
         
         NotificationCenter.default.addObserver(
             self,
@@ -94,12 +90,16 @@ class AVPlayerViewController
             
         )
     }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
 
     private func initializationBindRelationship() {
 
         let event = avToolsBar.playButton.rx.tap
             .map { [weak self] _ -> Bool in
-            return (self?.isPlaying())!
+            return self?.isPlaying() ?? false
         }
         .scan(player!, accumulator: { (player, isPlaying) -> AVPlayer in
             if isPlaying {
@@ -114,62 +114,61 @@ class AVPlayerViewController
         })
         .asObservable()
         
-        viewModel = MediaViewModel(
+        let viewModel = MediaViewModel(
             playerDuration:totalTimeVariable.asObservable(),
             currentTimeObservable:currentTimeVariable.asObservable(),
             event:event
         )
         
-        viewModel?.currentTime.asObservable()
+        viewModel.currentTime.asObservable()
             .bindTo(avToolsBar.currentTime.rx.text)
             .addDisposableTo(disposeBag)
         
-        viewModel?.totalTime
+        viewModel.totalTime
             .bindTo(avToolsBar.totalTime.rx.text)
             .addDisposableTo(disposeBag)
         
-        viewModel?.progress
+        viewModel.progress
             .bindTo(avToolsBar.slider.rx.value)
             .addDisposableTo(disposeBag)
         
-        viewModel?.playEvent
+        viewModel.playEvent
             .bindTo(avToolsBar.playButton.rx.playing)
             .addDisposableTo(disposeBag)
         
         avToolsBar.slider.rx.value
-            .subscribe(onNext: { value in
-                let playerDuration: CMTime = self.playerItemDuration()
+            .subscribe(onNext: { [weak self] value in
+                guard let weakSelf = self else { return }
+                
+                let playerDuration: CMTime = weakSelf.playerItemDuration()
                 let duration: Double  = CMTimeGetSeconds(playerDuration);
                 
-                let currentTime: Double = CMTimeGetSeconds(self.player!.currentTime())
+                let currentTime: Double = CMTimeGetSeconds(weakSelf.player.currentTime())
                 if (currentTime <= 0 && value == Float(0)) || (currentTime >= duration && value == 1) {
                     return;
                 }
                 
                 let time: Double = duration * Double(value)
-                self.player!.seek(to: CMTimeMakeWithSeconds(time, Int32(NSEC_PER_SEC)))
+                weakSelf.player.seek(to: CMTimeMakeWithSeconds(time, Int32(NSEC_PER_SEC)))
             })
             .addDisposableTo(disposeBag)
         
-        player!.addPeriodicTimeObserver(
+        player.addPeriodicTimeObserver(
             forInterval: CMTimeMake(100, 600),
             queue: DispatchQueue.main
         ) { [weak self] cmTime in
-            
-            guard self?.playerItemDuration() != nil else {
-                return
-            }
-            let playerDuration: CMTime = (self?.playerItemDuration())!
+            guard let weakSelf = self else { return }
+            let playerDuration: CMTime = weakSelf.playerItemDuration()
             if !playerDuration.isValid {
-                self?.currentTimeVariable.value = 0
-                self?.totalTimeVariable.value = 0
+                weakSelf.currentTimeVariable.value = 0
+                weakSelf.totalTimeVariable.value = 0
                 return
             }
-
+            
             let duration: Double = CMTimeGetSeconds(playerDuration)
-            let currentTime: Double = CMTimeGetSeconds((self?.player!.currentTime())!)
-            self?.currentTimeVariable.value = currentTime
-            self?.totalTimeVariable.value = duration
+            let currentTime: Double = CMTimeGetSeconds(weakSelf.player.currentTime())
+            weakSelf.currentTimeVariable.value = currentTime
+            weakSelf.totalTimeVariable.value = duration
         }
     }
     
@@ -177,12 +176,12 @@ class AVPlayerViewController
     ///
     /// - Returns: palyer is playing or not
     private func isPlaying() -> Bool {
-        return self.player!.rate != 0
+        return self.player.rate != 0
     }
     
     /// Get current player item duration
     private func playerItemDuration() -> CMTime {
-        let playerItem: AVPlayerItem = player!.currentItem!
+        let playerItem: AVPlayerItem = player.currentItem!
         if playerItem.status == .readyToPlay {
             return playerItem.duration
         }
@@ -197,14 +196,14 @@ class AVPlayerViewController
     // Mark: UIScrollView Delegate
     /// Zooming view
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-        return playerContainer!
+        return playerContainer
     }
     
     // MARK: Notification
     /// Send message when player did finished
     func playerItemDidReachEnd(notification: NSNotification) {
         avToolsBar.isPlaying = false
-        player?.seek(to: CMTimeMakeWithSeconds(0, Int32(NSEC_PER_SEC)))
+        player.seek(to: CMTimeMakeWithSeconds(0, Int32(NSEC_PER_SEC)))
         currentTimeVariable.value = 0
         totalTimeVariable.value = 0
     }

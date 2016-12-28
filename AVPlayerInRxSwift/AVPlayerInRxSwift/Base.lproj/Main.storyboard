@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C53a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="G0q-LD-jzg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D17a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="G0q-LD-jzg">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -17,7 +17,7 @@
                         <viewControllerLayoutGuide type="top" id="lUl-Oh-yzX"/>
                         <viewControllerLayoutGuide type="bottom" id="96W-Ip-NcY"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="DQY-sX-cQz" customClass="V">
+                    <view key="view" contentMode="scaleToFill" id="DQY-sX-cQz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -49,7 +49,7 @@
                         <viewControllerLayoutGuide type="top" id="Nqo-Qd-55M"/>
                         <viewControllerLayoutGuide type="bottom" id="xmq-5a-PUg"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="KjC-u3-ft1" customClass="AVPlayerv">
+                    <view key="view" contentMode="scaleToFill" id="KjC-u3-ft1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>

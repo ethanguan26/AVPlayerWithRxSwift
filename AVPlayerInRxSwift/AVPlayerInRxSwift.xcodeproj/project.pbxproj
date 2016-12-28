@@ -47,6 +47,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		58A977E31E13EB76005882FF /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				58E03EC91E101956005F7B23 /* sample.mp4 */,
+				58E03EB91E1018B2005F7B23 /* Assets.xcassets */,
+				58E03EBB1E1018B2005F7B23 /* LaunchScreen.storyboard */,
+				58E03EBE1E1018B2005F7B23 /* Info.plist */,
+			);
+			name = Support;
+			sourceTree = "<group>";
+		};
 		58E03EA21E1018B2005F7B23 = {
 			isa = PBXGroup;
 			children = (
@@ -72,12 +83,9 @@
 				58E03EC61E101956005F7B23 /* AVPlayerViewController.swift */,
 				58E03EC71E101956005F7B23 /* Extensions.swift */,
 				58E03EC81E101956005F7B23 /* MediaViewModel.swift */,
-				58E03EC91E101956005F7B23 /* sample.mp4 */,
 				58E03ECA1E101956005F7B23 /* ViewController.swift */,
 				58E03EAE1E1018B2005F7B23 /* AppDelegate.swift */,
-				58E03EB91E1018B2005F7B23 /* Assets.xcassets */,
-				58E03EBB1E1018B2005F7B23 /* LaunchScreen.storyboard */,
-				58E03EBE1E1018B2005F7B23 /* Info.plist */,
+				58A977E31E13EB76005882FF /* Support */,
 			);
 			path = AVPlayerInRxSwift;
 			sourceTree = "<group>";
@@ -327,6 +335,7 @@
 				58E03EC31E1018B2005F7B23 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

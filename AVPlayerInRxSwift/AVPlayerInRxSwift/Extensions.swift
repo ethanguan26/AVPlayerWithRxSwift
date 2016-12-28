@@ -13,7 +13,7 @@ import UIKit
 
 extension Double {
     
-    /// Transform the doubleValue with formatter
+    /// convert the doubleValue with formatter
     ///
     /// - Returns: Return the time after formatter (e.g. 00:00:00)
     func toTimeFormatter() -> String {
