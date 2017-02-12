@@ -32,9 +32,7 @@ class AVPlayerToolsBar: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
         Bundle.main.loadNibNamed("AVPlayerToolsBar", owner: self, options: nil)
-        
         self.addSubview(barView)
     }
     

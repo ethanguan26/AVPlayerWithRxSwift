@@ -10,6 +10,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 import UIKit
+import AVFoundation
 
 extension Double {
     
@@ -27,6 +28,32 @@ extension Double {
     }
 }
 
+
+extension AVPlayer {
+    
+    /// Get current player item duration
+    func playerItemDuration() -> CMTime {
+        let playerItem: AVPlayerItem = self.currentItem!
+        if playerItem.status == .readyToPlay {
+            return playerItem.duration
+        }
+        return kCMTimeInvalid
+    }
+}
+
+extension Reactive where Base: AVPlayer {
+    
+    var progress: UIBindingObserver<Base, Float> {
+        return UIBindingObserver(UIElement: base) { player, progress in
+            let playerDuration: CMTime = player.playerItemDuration()
+            let duration: Double  = CMTimeGetSeconds(playerDuration);
+            
+            let time: Double = duration * Double(progress)
+            player.seek(to: CMTimeMakeWithSeconds(time, Int32(NSEC_PER_SEC)))
+        }
+    }
+    
+}
 
 extension Reactive where Base: UIButton {
 

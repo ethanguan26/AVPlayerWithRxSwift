@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D17a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="G0q-LD-jzg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E144f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="G0q-LD-jzg">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -53,9 +53,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nhd-IY-FeY">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
-                            </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1U9-Cb-Gl2" customClass="AVPlayerToolsBar" customModule="AVPlayerInRxSwift" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.79514471476510062" colorSpace="calibratedWhite"/>
@@ -63,21 +60,25 @@
                                     <constraint firstAttribute="height" constant="44" id="nel-VH-yQt"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eQr-AK-6Rg">
+                                <rect key="frame" x="0.0" y="64" width="375" height="559"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="xmq-5a-PUg" firstAttribute="top" secondItem="1U9-Cb-Gl2" secondAttribute="bottom" id="8r6-MQ-jiB"/>
-                            <constraint firstAttribute="trailing" secondItem="nhd-IY-FeY" secondAttribute="trailing" id="CPE-MR-WrH"/>
                             <constraint firstAttribute="trailing" secondItem="1U9-Cb-Gl2" secondAttribute="trailing" id="IxM-Eb-Wg7"/>
-                            <constraint firstItem="1U9-Cb-Gl2" firstAttribute="top" secondItem="nhd-IY-FeY" secondAttribute="bottom" id="MuO-vU-PUH"/>
-                            <constraint firstItem="nhd-IY-FeY" firstAttribute="top" secondItem="KjC-u3-ft1" secondAttribute="top" id="QFJ-So-2k3"/>
-                            <constraint firstItem="nhd-IY-FeY" firstAttribute="leading" secondItem="KjC-u3-ft1" secondAttribute="leading" id="Qtb-zO-WTY"/>
+                            <constraint firstAttribute="trailing" secondItem="eQr-AK-6Rg" secondAttribute="trailing" id="RDn-da-hHt"/>
                             <constraint firstItem="1U9-Cb-Gl2" firstAttribute="leading" secondItem="KjC-u3-ft1" secondAttribute="leading" id="Vmn-S3-0F7"/>
+                            <constraint firstItem="eQr-AK-6Rg" firstAttribute="leading" secondItem="KjC-u3-ft1" secondAttribute="leading" id="Ww3-QA-eCJ"/>
+                            <constraint firstItem="eQr-AK-6Rg" firstAttribute="top" secondItem="Nqo-Qd-55M" secondAttribute="bottom" id="bSH-ub-4wf"/>
+                            <constraint firstItem="1U9-Cb-Gl2" firstAttribute="top" secondItem="eQr-AK-6Rg" secondAttribute="bottom" id="gxZ-Ep-p3r"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="avToolsBar" destination="1U9-Cb-Gl2" id="n43-Zp-yKk"/>
-                        <outlet property="scrollView" destination="nhd-IY-FeY" id="qW1-Gh-cK6"/>
+                        <outlet property="playerContainer" destination="eQr-AK-6Rg" id="dtv-EA-PAY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sy7-kI-7Rb" userLabel="First Responder" sceneMemberID="firstResponder"/>

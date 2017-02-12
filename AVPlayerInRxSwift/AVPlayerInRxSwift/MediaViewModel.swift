@@ -12,50 +12,38 @@ import RxCocoa
 
 struct MediaViewModel {
     
-    let disposeBag = DisposeBag()
+    var currentTimeVariable = Variable(0.0)
+    var totalTimeVariable = Variable(0.0)
     
     let playEvent = PublishSubject<Bool>()
-    let totalTime = PublishSubject<String>()
-    let currentTime = PublishSubject<String>()
-    let progress = PublishSubject<Float>()
+    let totalTime: Observable<String>
+    let currentTime: Observable<String>
+    let progress: Observable<Float>
     
     var isPlaying = false
     
     init(
-        playerDuration: Observable<Double>,
-        currentTimeObservable: Observable<Double>,
-        event: Observable<Bool>
+        playAction: Observable<Bool>,
+        finishPlaying: Observable<Notification>
         ) {
         
-        Observable.combineLatest(playerDuration, currentTimeObservable) {
+        progress = Observable.combineLatest(totalTimeVariable.asObservable(), currentTimeVariable.asObservable()) {
             (duration, current) -> Float in
-            
             let progress: Float = Float(current/duration)
             let progressStr = String(format: "%.2f", progress)
             return  Float(progressStr)!
             }
-            .bindTo(progress)
-            .addDisposableTo(disposeBag)
         
-        currentTimeObservable
+        currentTime = currentTimeVariable.asObservable()
             .map { nowTime -> String in
                 return nowTime.toTimeFormatter()
             }
-            .bindTo(currentTime)
-            .addDisposableTo(disposeBag)
         
-        
-        playerDuration
+        totalTime = totalTimeVariable.asObservable()
             .map { duration -> String in
                 return duration.toTimeFormatter()
             }
-            .bindTo(totalTime)
-            .addDisposableTo(disposeBag)
-        
-        
-        event
-        .bindTo(playEvent)
-        .addDisposableTo(disposeBag)
+
     }
     
 }
