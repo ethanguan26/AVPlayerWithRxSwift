@@ -69,27 +69,27 @@ class AVPlayerViewController
     
     private func initializationBindRelationship() {
 
-         let finishPlaying = NotificationCenter.default.rx.notification(NSNotification.Name.AVPlayerItemDidPlayToEndTime)
+        let finishPlaying = NotificationCenter.default.rx.notification(NSNotification.Name.AVPlayerItemDidPlayToEndTime)
         
-        let event = avToolsBar.playButton.rx.tap
-            .map { [weak self] _ -> Bool in
-            return self?.isPlaying() ?? false
-        }
-        .scan(player!, accumulator: { (player, isPlaying) -> AVPlayer in
-            if isPlaying {
-                player.pause()
-            } else {
-                player.play()
+        avToolsBar.playButton.rx.tap
+            .map { [unowned self] _ -> Bool in
+                return self.player.isPlaying()
             }
-            return player
-        })
-        .map({ player in
-            return player.rate > 0
-        })
-        .asObservable()
+            .do(onNext: { [unowned self] isPlaying in
+                self.avToolsBar.isPlaying = !isPlaying
+            })
+            .bindTo(player.rx.isPlaying)
+            .addDisposableTo(disposeBag)
         
-        let viewModel = MediaViewModel(playAction:event,
-                                       finishPlaying: finishPlaying)
+        finishPlaying
+            .subscribe(onNext: { [weak self] _ in
+            guard let `self` = self else { return }
+            self.avToolsBar.isPlaying = false
+            self.player.seek(to: CMTime(value: 0, timescale: 1))
+        })
+        .addDisposableTo(disposeBag)
+        
+        let viewModel = MediaViewModel(finishPlaying: finishPlaying)
         
         viewModel.currentTime.asObservable()
             .bindTo(avToolsBar.currentTime.rx.text)
@@ -117,7 +117,7 @@ class AVPlayerViewController
         ) { [weak self] cmTime in
             guard let weakSelf = self else { return }
             let playerDuration: CMTime = weakSelf.player.playerItemDuration()
-            if !playerDuration.isValid {
+            guard playerDuration.isValid else {
                 viewModel.currentTimeVariable.value = 0
                 viewModel.totalTimeVariable.value = 0
                 return
@@ -128,15 +128,6 @@ class AVPlayerViewController
             viewModel.currentTimeVariable.value = currentTime
             viewModel.totalTimeVariable.value = duration
         }
-        
-        
     }
     
-    /// Return the current player playing status
-    ///
-    /// - Returns: palyer is playing or not
-    private func isPlaying() -> Bool {
-        return self.player.rate != 0
-    }
-
 }

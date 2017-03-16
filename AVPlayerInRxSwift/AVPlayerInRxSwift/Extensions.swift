@@ -39,6 +39,13 @@ extension AVPlayer {
         }
         return kCMTimeInvalid
     }
+    
+    /// Return the current player playing status
+    ///
+    /// - Returns: palyer is playing or not
+    func isPlaying() -> Bool {
+        return self.rate != 0
+    }
 }
 
 extension Reactive where Base: AVPlayer {
@@ -50,6 +57,16 @@ extension Reactive where Base: AVPlayer {
             
             let time: Double = duration * Double(progress)
             player.seek(to: CMTimeMakeWithSeconds(time, Int32(NSEC_PER_SEC)))
+        }
+    }
+    
+    var isPlaying: UIBindingObserver<Base, Bool> {
+        return UIBindingObserver(UIElement: base) { player, isPlaying in
+            if isPlaying {
+                player.pause()
+            } else {
+                player.play()
+            }
         }
     }
     
